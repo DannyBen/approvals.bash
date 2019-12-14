@@ -50,7 +50,7 @@ approve() {
     green "\rPASS $cmd"
   else
     echo "--- [$(blue "diff: $cmd")] ---"
-    diff --unified --color=always <(printf "%b" "$expected\n") <(printf "%b" "$actual\n" )  | tail -n +4
+    diff --unified --color <(printf "%b" "$expected\n") <(printf "%b" "$actual\n" )  | tail -n +4
     echo "--- [$(blue "diff: $cmd")] ---"
     user_approval "$cmd" "$actual" "$approval_file"
   fi
