@@ -1,8 +1,6 @@
 language: generic
 
 script:
-- diff --version
-- diff --help
 - shellcheck -x test/test.sh
 - test/test.sh
 
