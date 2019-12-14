@@ -8,6 +8,8 @@ Approvals.bash - Bash Interactive Approval Testing
 
 Interactive approval testing for your bash scripts.
 
+![demo](demo/cast.svg)
+
 This script will compare the output of a command with an expected output
 stored in the approvals folder.
  
@@ -22,14 +24,23 @@ stored in the approvals folder.
 - When running in a CI environment (CI variable exists), we will run in non
   interactive mode (so tests will fail automatically if they do not match).
 
+
+Installation
+--------------------------------------------------
+
+Download [approvals.bash](approvals.bash) to your test folder. You can also
+download it by running this:
+
+```shell
+wget https://raw.githubusercontent.com/DannyBen/approvals.bash/master/approvals.bash
+```
+
 Usage
 --------------------------------------------------
 
-In your test script:
+In your test script, add `approve` commands, using this syntax:
 
 ```bash
-#!/usr/bin/env bash
-source approvals.bash
 approve <command> [<approval file name>]
 ```
 
