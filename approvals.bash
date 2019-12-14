@@ -1,5 +1,7 @@
+# approvals.bash v0.2.0
+#
 # Interactive approval testing for Bash.
-# Author: Danny Ben Shitrit (https://github.com/dannyben)
+# https://github.com/DannyBen/approvals.bash
 #
 # This script will compare the output of a command with an expected output
 # stored in the approvals folder.

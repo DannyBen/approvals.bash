@@ -1,6 +1,11 @@
 Approvals.bash - Bash Interactive Approval Testing
 ==================================================
 
+![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)
+[![Build Status](https://travis-ci.com/DannyBen/approvals.bash.svg?branch=master)](https://travis-ci.com/DannyBen/approvals.bash)
+
+---
+
 Interactive approval testing for your bash scripts.
 
 This script will compare the output of a command with an expected output
