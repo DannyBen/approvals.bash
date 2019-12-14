@@ -82,8 +82,8 @@ red() { printf "\e[31m%b\e[0m\n" "$*"; }
 green() { printf "\e[32m%b\e[0m\n" "$*"; }
 blue() { printf "\e[34m%b\e[0m\n" "$*"; }
 
-if diff --help | grep -- --color=always > /dev/null 2>&1; then
-  diff_cmd="diff --unified --color"
+if diff --help | grep -- --color > /dev/null 2>&1; then
+  diff_cmd="diff --unified --color=always"
 else
   diff_cmd="diff --unified"
 fi
