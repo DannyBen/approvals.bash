@@ -1,4 +1,4 @@
-# approvals.bash v0.2.0
+# approvals.bash v0.2.1
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
