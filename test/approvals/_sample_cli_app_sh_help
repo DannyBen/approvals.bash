@@ -1,0 +1,3 @@
+Usage:
+  sample-cli-app say MESSAGE
+  sample-cli-app --help

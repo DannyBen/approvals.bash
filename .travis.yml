@@ -1,0 +1,6 @@
+language: generic
+
+script:
+- shellcheck -x test/test.sh
+- test/test.sh
+
