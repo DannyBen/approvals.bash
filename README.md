@@ -1,8 +1,8 @@
 Approvals.bash - Bash Interactive Approval Testing
 ==================================================
 
-![Version](https://img.shields.io/badge/version-0.2.2-blue.svg)
-[![Build Status](https://travis-ci.com/DannyBen/approvals.bash.svg?branch=master)](https://travis-ci.com/DannyBen/approvals.bash)
+![Version](https://img.shields.io/badge/version-0.2.3-blue.svg)
+[![Build Status](https://github.com/DannyBen/approvals.bash/workflows/Test/badge.svg)](https://github.com/DannyBen/approvals.bash/actions?query=workflow%3ATest)
 
 ---
 
