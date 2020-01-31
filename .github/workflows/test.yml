@@ -1,0 +1,20 @@
+name: Test
+on:
+  pull_request:
+  push: { branches: master }
+
+jobs:
+  test:
+    name: Run test suite
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run shellcheck tests
+      run: shellcheck -x test/test.sh
+
+    - name: Run approval tests
+      run: test/test.sh
