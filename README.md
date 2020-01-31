@@ -21,8 +21,9 @@ stored in the approvals folder.
   test will pass.
 - When a new/updated approval is rejected, we will exit immediately with
   exit code 1.
-- When running in a CI environment (CI variable exists), we will run in non
-  interactive mode (so tests will fail automatically if they do not match).
+- When running in a CI environment (CI variable exists), or on GitHub
+  Actions (GITHUB_ACTIONS variable exists), we will run in non interactive
+  mode (so tests will fail automatically if they do not match).
 
 
 Installation
