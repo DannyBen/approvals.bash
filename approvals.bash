@@ -1,36 +1,13 @@
-# approvals.bash v0.2.3
+# approvals.bash v0.2.4
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
-#
-# This script will compare the output of a command with an expected output
-# stored in the approvals folder.
-# 
-# - When the approval file does not exist, the actual output will be shown to
-#   you, and you will be prompted to approve (and save) it.
-# - When the approval file exists, but contains different data, the diff will
-#   be shown to you, and you will be prompted to approve (and save) it.
-# - When the approval file exists and contains matching data, the approval
-#   test will pass.
-# - When a new/updated approval is rejected, we will exit immediately with
-#   exit code 1
-# - When running in a CI environment (CI variable exists), or on GitHub
-#   Actions (GITHUB_ACTIONS variable exists), we will run in non interactive
-#   mode (so tests will fail automatically if they do not match).
-#
-# Usage
-#   source approvals.bash
-#   approve <command> [<approval file name>]
-#
-# Exapmple
-#   approve "ls -s"
-#   approve "ls -s" "ls_size"
-#
 approve() {
   local expected approval approval_file actual cmd
   
   cmd=$1
   actual=$(eval "$cmd" 2>&1)  
+  exit_code=$?
   approval=$(printf "%b" "$cmd" | tr -s -c "[:alnum:]" _)
   approval_file="approvals/${2:-"$approval"}"
 
@@ -48,14 +25,32 @@ approve() {
   fi
 
   if [[ "$(printf "%b" "$actual")" = "$(printf "%b" "$expected")" ]]; then
-    green "\rPASS $cmd"
+    green "PASS $cmd"
   else
     echo "--- [$(blue "diff: $cmd")] ---"
     $diff_cmd <(printf "%b" "$expected\n") <(printf "%b" "$actual\n" )  | tail -n +4
     echo "--- [$(blue "diff: $cmd")] ---"
     user_approval "$cmd" "$actual" "$approval_file"
   fi
+  return $exit_code
 }
+
+describe() {
+  cyan "TEST $*"
+}
+
+fail() {
+  red "FAIL $*"
+  exit 1
+}
+
+red() { printf "\e[31m%b\e[0m\n" "$*"; }
+green() { printf "\e[32m%b\e[0m\n" "$*"; }
+blue() { printf "\e[34m%b\e[0m\n" "$*"; }
+magenta() { printf "\e[35m%b\e[0m\n" "$*"; }
+cyan() { printf "\e[36m%b\e[0m\n" "$*"; }
+
+# Private
 
 user_approval() {
   local cmd="$1"
@@ -63,25 +58,20 @@ user_approval() {
   local approval_file="$3"
 
   if [[ -v CI || -v GITHUB_ACTIONS ]]; then
-    red "\rFAIL $cmd"
-    exit 1
+    fail "$cmd"
   fi
 
   echo 
   printf "[A]pprove? \n"
   read -r -n 1 response
+  printf "\r"
   if [[ $response =~ [Aa] ]]; then
     printf "%b\n" "$actual" > "$approval_file"
-    green "\rPASS $cmd"
+    green "PASS $cmd"
   else
-    red "\rFAIL $cmd"
-    exit 1
+    fail "$cmd"
   fi
 }
-
-red() { printf "\e[31m%b\e[0m\n" "$*"; }
-green() { printf "\e[32m%b\e[0m\n" "$*"; }
-blue() { printf "\e[34m%b\e[0m\n" "$*"; }
 
 if diff --help | grep -- --color > /dev/null 2>&1; then
   diff_cmd="diff --unified --color=always"

@@ -1,7 +1,7 @@
 Approvals.bash - Bash Interactive Approval Testing
 ==================================================
 
-![Version](https://img.shields.io/badge/version-0.2.3-blue.svg)
+![Version](https://img.shields.io/badge/version-0.2.4-blue.svg)
 [![Build Status](https://github.com/DannyBen/approvals.bash/workflows/Test/badge.svg)](https://github.com/DannyBen/approvals.bash/actions?query=workflow%3ATest)
 
 ---
@@ -56,8 +56,44 @@ approve "ls -s" "ls_size"
 # ... more tests
 ```
 
-See the [test.sh](test/test.sh) file in this repository for a simple working 
-example, or [this real world example][1].
+### Adding `describe` annotations
+
+If your apptovals test files become too long, you may use the `describe`
+command to annotate your tests. This is purely decorative.
+
+```bash
+describe "test ls"
+  approve "ls -s"
+
+describe "test ls in another directory"
+  cd ./tmp
+  approve "ls -s"
+  approve "ls -s" "ls_size"
+  cd ../
+```
+
+The indentation is optional.
 
 
-[1]: https://github.com/DannyBen/rush-cli/blob/master/test/test.sh
+### Testing exit code and triggering custom failures
+
+- The `approve` command returns the exit code of the command under test.
+- You can use the `fail` command to force a failure.
+
+For example:
+
+```bash
+approve "some-command --that --fails"
+[[ $? == 0 ]] && fail "Expected non zero code, got $?"
+```
+
+
+Real World Examples
+--------------------------------------------------
+
+- The [test.sh](test/test.sh) file in this repository
+- Approvals for the [rush command line][rush-example]
+- Approvals for the [opcode command line][opcode-example]
+
+[rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/test.sh
+[opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
