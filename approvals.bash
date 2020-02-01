@@ -1,4 +1,4 @@
-# approvals.bash v0.2.4
+# approvals.bash v0.2.5
 #
 # Interactive approval testing for Bash.
 # https://github.com/DannyBen/approvals.bash
@@ -7,7 +7,7 @@ approve() {
   
   cmd=$1
   actual=$(eval "$cmd" 2>&1)  
-  exit_code=$?
+  last_exit_code=$?
   approval=$(printf "%b" "$cmd" | tr -s -c "[:alnum:]" _)
   approval_file="approvals/${2:-"$approval"}"
 
@@ -32,7 +32,6 @@ approve() {
     echo "--- [$(blue "diff: $cmd")] ---"
     user_approval "$cmd" "$actual" "$approval_file"
   fi
-  return $exit_code
 }
 
 describe() {
@@ -42,6 +41,14 @@ describe() {
 fail() {
   red "FAIL $*"
   exit 1
+}
+
+expect_exit_code() {
+  if [[ $last_exit_code == $1 ]]; then
+    green "PASS exit $last_exit_code"
+  else
+    fail "Expected exit code $1, got $last_exit_code"
+  fi
 }
 
 red() { printf "\e[31m%b\e[0m\n" "$*"; }
