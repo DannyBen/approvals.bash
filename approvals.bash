@@ -50,7 +50,7 @@ pass() {
 }
 
 expect_exit_code() {
-  if [[ $last_exit_code == $1 ]]; then
+  if [[ $last_exit_code == "$1" ]]; then
     pass "exit $last_exit_code"
   else
     fail "Expected exit code $1, got $last_exit_code"
