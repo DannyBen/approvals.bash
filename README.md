@@ -105,7 +105,14 @@ By default, all approvales are stored in the `./approvals` directory
 (relative to the currently running test).
 
 If you wish to store approvals in a different directory, set the
-`APPROVALS_DIR` environment variable beforoe running your tests.
+`APPROVALS_DIR` environment variable before running your tests:
+
+```shell
+# test/test.sh
+export APPROVALS_DIR=$PWD/my-approvals
+
+approve "..."
+```
 
 
 Real World Examples
