@@ -11,3 +11,7 @@ approve "./sample-cli-app.sh --help"
 approve "./sample-cli-app.sh say"
 approve "./sample-cli-app.sh say hello"
 approve "./sample-cli-app.sh say hello" "alternative_fixture_file"
+
+# Write approvals to a different directory
+APPROVALS_DIR=alt-approvals
+approve "./sample-cli-app.sh"
