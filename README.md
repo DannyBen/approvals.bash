@@ -1,7 +1,7 @@
 Approvals.bash - Bash Interactive Approval Testing
 ==================================================
 
-![Version](https://img.shields.io/badge/version-0.2.5-blue.svg)
+![Version](https://img.shields.io/badge/version-0.2.6-blue.svg)
 [![Build Status](https://github.com/DannyBen/approvals.bash/workflows/Test/badge.svg)](https://github.com/DannyBen/approvals.bash/actions?query=workflow%3ATest)
 
 ---
@@ -56,6 +56,7 @@ approve "ls -s" "ls_size"
 # ... more tests
 ```
 
+
 ### Adding `describe` annotations
 
 If your apptovals test files become too long, you may use the `describe`
@@ -87,6 +88,7 @@ approve "some-command --that --fails"
 expect_exit_code 1
 ```
 
+
 ### Triggering custom failures
 
 You can use the `fail <message>` command to trigger custom failures:
@@ -94,6 +96,22 @@ You can use the `fail <message>` command to trigger custom failures:
 ```bash
 approve "some-command-that-creates some-dir"
 [[ -d some-dir ]] || fail "Expected directory some-dir to exist"
+```
+
+
+### Configuration
+
+By default, all approvales are stored in the `./approvals` directory
+(relative to the currently running test).
+
+If you wish to store approvals in a different directory, set the
+`APPROVALS_DIR` environment variable before running your tests:
+
+```shell
+# test/test.sh
+export APPROVALS_DIR=$PWD/my-approvals
+
+approve "..."
 ```
 
 
