@@ -12,7 +12,7 @@ Interactive approval testing for your bash scripts.
 
 This script will compare the output of a command with an expected output
 stored in the approvals folder.
- 
+
 - When the approval file does not exist, the actual output will be shown to
   you, and you will be prompted to approve (and save) it.
 - When the approval file exists, but contains different data, the diff will
@@ -33,7 +33,7 @@ Download [approvals.bash](approvals.bash) to your test folder. You can also
 download it by running this:
 
 ```shell
-wget https://raw.githubusercontent.com/DannyBen/approvals.bash/master/approvals.bash
+wget get.dannyb.co/approvals.bash
 ```
 
 Usage
