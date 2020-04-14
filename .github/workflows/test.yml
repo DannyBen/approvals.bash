@@ -6,7 +6,6 @@ on:
 jobs:
   test:
     name: Run test suite
-
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +13,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run shellcheck tests
-      run: shellcheck -x test/test.sh
+      run: shellcheck -x test/approve
 
     - name: Run approval tests
-      run: test/test.sh
+      run: test/approve
