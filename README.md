@@ -115,6 +115,13 @@ approve "..."
 ```
 
 
+Compatibility
+--------------------------------------------------
+
+approvals.bash was tested in **bash** (version 4.0 or higher) and **zsh**,
+but might work in other shells as well.
+
+
 Real World Examples
 --------------------------------------------------
 
