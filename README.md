@@ -131,6 +131,6 @@ Real World Examples
 - Approvals for [alf][alf-example], the global bash alias manager
 
 
-[rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/test.sh
+[rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
 [alf-example]: https://github.com/DannyBen/alf/tree/master/test
