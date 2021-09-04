@@ -125,7 +125,7 @@ but might work in other shells as well.
 Real World Examples
 --------------------------------------------------
 
-- The [test.sh](test/test.sh) file in this repository
+- The [approve][approve] file in this repository
 - Approvals for [rush][rush-example], the personal shell-based package manager
 - Approvals for [opcode][opcode-example], the local alias manager
 - Approvals for [alf][alf-example], the global bash alias manager
@@ -134,3 +134,4 @@ Real World Examples
 [rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
 [alf-example]: https://github.com/DannyBen/alf/tree/master/test
+[approve]: https://github.com/DannyBen/approvals.bash/blob/master/test/approve
