@@ -42,7 +42,7 @@ F12::
   Sleep 2000
 
   Type("exit")
-  Type("cat cast.json | svg-term --out cast.svg --window")
+  Type("svg-term --in cast.json --out cast.svg --window")
 Return
 
 ^F12::
