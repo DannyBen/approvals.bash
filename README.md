@@ -90,7 +90,7 @@ You can test the exit code of the last approved command by using the
 For example:
 
 ```bash
-approve "some-command --that --fails"
+approve "some-command --that --fails" || return 0
 expect_exit_code 1
 ```
 
