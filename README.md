@@ -1,5 +1,4 @@
-Approvals.bash - Bash Interactive Approval Testing
-==================================================
+# Approvals.bash - Bash Interactive Approval Testing
 
 ![Version](https://img.shields.io/badge/version-0.2.7-blue.svg)
 [![Build Status](https://github.com/DannyBen/approvals.bash/workflows/Test/badge.svg)](https://github.com/DannyBen/approvals.bash/actions?query=workflow%3ATest)
@@ -26,8 +25,7 @@ stored in the approvals folder.
   mode (so tests will fail automatically if they do not match).
 
 
-Installation
---------------------------------------------------
+## Installation
 
 Download [approvals.bash](approvals.bash) to your test folder. You can also
 download it by running this:
@@ -36,8 +34,7 @@ download it by running this:
 wget get.dannyb.co/approvals.bash
 ```
 
-Usage
---------------------------------------------------
+## Usage
 
 In your test script, add `approve` commands, using this syntax:
 
@@ -57,19 +54,28 @@ approve "ls -s" "ls_size"
 ```
 
 
-### Adding `describe` annotations
+### Adding `context` and `describe` annotations
 
-If your apptovals test files become too long, you may use the `describe`
-command to annotate your tests. This is purely decorative.
+If your apptovals test files become too long or complex, you may use the
+`describe` and `context` commands to annotate your tests. This is purely
+decorative.
+
+- `context` - echos the provided string as is
+- `describe` - echos the provided string with 2 space indentation
+
+The design intention was to generate output similar to Ruby's `rspec`.
 
 ```bash
-describe "test ls"
-  approve "ls -s"
+context "basic operations"
+  describe "test ls"
+    approve "ls -s"
 
-describe "test ls in another directory"
+context "when in a non-empty directory"
   cd ./tmp
-  approve "ls -s"
-  approve "ls -s" "ls_size"
+  describe "test ls in another directory"
+    approve "ls -s"
+    approve "ls -s" "ls_size"
+  
   cd ../
 ```
 
@@ -115,23 +121,23 @@ approve "..."
 ```
 
 
-Compatibility
---------------------------------------------------
+## Compatibility
 
 approvals.bash was tested in **bash** (version 4.0 or higher) and **zsh**,
 but might work in other shells as well.
 
 
-Real World Examples
---------------------------------------------------
+## Real World Examples
 
 - The [approve][approve] file in this repository
 - Approvals for [rush][rush-example], the personal shell-based package manager
 - Approvals for [opcode][opcode-example], the local alias manager
 - Approvals for [alf][alf-example], the global bash alias manager
+- Approvals for [fuzzy-cd][fuzzy-cd-example], the fuzzy search cd patch
 
 
 [rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
 [alf-example]: https://github.com/DannyBen/alf/tree/master/test
+[fuzzy-cd-example]: https://github.com/DannyBen/fuzzy-cd/tree/master/test/approve
 [approve]: https://github.com/DannyBen/approvals.bash/blob/master/test/approve
