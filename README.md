@@ -134,10 +134,12 @@ but might work in other shells as well.
 - Approvals for [opcode][opcode-example], the local alias manager
 - Approvals for [alf][alf-example], the global bash alias manager
 - Approvals for [fuzzy-cd][fuzzy-cd-example], the fuzzy search cd patch
+- Approvals for [respec][respec-example], the RSpec convenience wrapper
 
 
 [rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
 [alf-example]: https://github.com/DannyBen/alf/tree/master/test
 [fuzzy-cd-example]: https://github.com/DannyBen/fuzzy-cd/tree/master/test/approve
+[respec-example]: https://github.com/DannyBen/respec/tree/master/test/approve
 [approve]: https://github.com/DannyBen/approvals.bash/blob/master/test/approve
