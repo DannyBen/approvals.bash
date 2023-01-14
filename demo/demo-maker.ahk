@@ -6,9 +6,6 @@ SetkeyDelay 0, 50
 
 ; NOTE: This should be executed in the demo folder
 
-Outfile := "cast.svg"
-Template := "window_frame"
-
 Return
 
 Type(Command, Delay=2000) {
@@ -19,6 +16,7 @@ Type(Command, Delay=2000) {
 }
 
 F12::
+  Type("{#} Press F11 to abort at any time")
   Type("cd ./demo")
   Type("cp ../approvals.bash .")
   Type("rm new-file {;} mkdir -p approvals {;} rm -rf test.sh {;} rm -rf approvals/*")
@@ -29,8 +27,9 @@ F12::
   Type("", 50)
   Type("source ""approvals.bash""", 300)
   Type("", 50)
-  Type("approve ""ls""", 300)
-  Type("approve ""git --version""")
+  Type("describe ""basic operation""", 300)
+  Type("  approve ""ls""", 300)
+  Type("  approve ""git --version""")
   Type("{Escape}:exit")
   Type("./test.sh", 4000)
   Send a
@@ -45,8 +44,9 @@ F12::
   Sleep 2000
 
   Type("exit")
-  Type("svg-term --in cast.json --out cast.svg --window")
-  Sleep 100
+  ; Type("svg-term --in cast.json --out cast.svg --window")
+  Type("agg --font-size 20 cast.json cast.gif")
+  Sleep 400
   Type("rm new-file {;} rm -rf test.sh")
   Type("cd ..")
   Type("{#} Done")

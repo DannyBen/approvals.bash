@@ -7,7 +7,7 @@
 
 Interactive approval testing for your bash scripts.
 
-![demo](demo/cast.svg)
+![demo](demo/cast.gif)
 
 This script will compare the output of a command with an expected output
 stored in the approvals folder.
