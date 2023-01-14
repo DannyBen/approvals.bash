@@ -19,13 +19,16 @@ Type(Command, Delay=2000) {
 }
 
 F12::
-  Type("cd demo")
-  Type("rm new-file {;} mkdir approvals {;} rm -rf test.sh {;} rm -rf approvals/*")
+  Type("cd ./demo")
+  Type("cp ../approvals.bash .")
+  Type("rm new-file {;} mkdir -p approvals {;} rm -rf test.sh {;} rm -rf approvals/*")
   Type("rm -rf cast.json {;} asciinema rec cast.json", 4000)
 
   Type("vi test.sh")
-  Type("i{#}{!}/usr/bin/env bash`n", 300)
-  Type("source ""approvals.bash""`n", 300)
+  Type("i{#}{!}/usr/bin/env bash", 300)
+  Type("", 50)
+  Type("source ""approvals.bash""", 300)
+  Type("", 50)
   Type("approve ""ls""", 300)
   Type("approve ""git --version""")
   Type("{Escape}:exit")
@@ -43,6 +46,11 @@ F12::
 
   Type("exit")
   Type("svg-term --in cast.json --out cast.svg --window")
+  Sleep 100
+  Type("rm new-file {;} rm -rf test.sh")
+  Type("cd ..")
+  Type("{#} Done")
+
 Return
 
 ^F12::
