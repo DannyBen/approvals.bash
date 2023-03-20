@@ -57,13 +57,8 @@ approve "ls -s" "ls_size"
 ### Adding `context` and `describe` annotations
 
 If your apptovals test files become too long or complex, you may use the
-`describe` and `context` commands to annotate your tests. This is purely
-decorative.
-
-- `context` - echos the provided string as is
-- `describe` - echos the provided string with 2 space indentation
-
-The design intention was to generate output similar to Ruby's `rspec`.
+`describe` and `context` commands to annotate your tests. These commands are
+purely decorative and will output the provided strings as captions.
 
 ```bash
 context "basic operations"
