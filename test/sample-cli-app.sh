@@ -6,6 +6,8 @@ if [[ $1 = "--help" ]]; then
   echo "  sample-cli-app --help"
 elif [[ $1 = "say" ]]; then
   echo "${2:-hi}"
+elif [[ $1 = "random" ]]; then
+  echo "This line contains changing output [$RANDOM]"
 else
   echo "Run sample-cli-app --help for help"
 fi
