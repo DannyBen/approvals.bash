@@ -14,6 +14,10 @@ context "standard operation"
     approve "./sample-cli-app.sh say hello"
     approve "./sample-cli-app.sh say hello" "alternative_fixture_file"
 
+    # ignore the part matching this regex in the following approve call
+    allow_diff "[0-9]\+"
+    approve "./sample-cli-app.sh random"
+
 context "when APPROVALS_DIR is set"
   APPROVALS_DIR=alt-approvals
   

@@ -1,6 +1,6 @@
 # Approvals.bash - Bash Interactive Approval Testing
 
-![Version](https://img.shields.io/badge/version-0.3.2-blue.svg)
+![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)
 [![Build Status](https://github.com/DannyBen/approvals.bash/workflows/Test/badge.svg)](https://github.com/DannyBen/approvals.bash/actions?query=workflow%3ATest)
 
 ---
@@ -89,6 +89,18 @@ approve "some-command --that --fails" || return 0
 expect_exit_code 1
 ```
 
+
+### Allowing some difference
+
+In case the command under test outputs slightly different values each run,
+you can use the `allow_diff <regex>` command. This regex will be replaced
+with an asterisk (`*`) in the actual output in the following `approve` call
+(once only).
+
+```bash
+allow_diff "[0-9]\+"
+approve "date"
+```
 
 ### Triggering custom failures
 
