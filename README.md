@@ -9,20 +9,23 @@ Interactive approval testing for your bash scripts.
 
 ![demo](demo/cast.gif)
 
-This script will compare the output of a command with an expected output
-stored in the approvals folder.
+**approvals.bash** is a lightweight interactive testing framework for your bash
+scripts.
 
-- When the approval file does not exist, the actual output will be shown to
-  you, and you will be prompted to approve (and save) it.
+With it, your tests will compare the output of a command with an
+expected output stored in the approvals folder.
+
+- When the approval file does not exist, the actual output will be displayed,
+  and you will be prompted to approve (and save) it.
 - When the approval file exists, but contains different data, the diff will
-  be shown to you, and you will be prompted to approve (and save) it.
+  be displayed, and you will be prompted to approve (and save) it.
 - When the approval file exists and contains matching data, the approval
   test will pass.
-- When a new/updated approval is rejected, we will exit immediately with
-  exit code 1.
+- When a new/updated approval is rejected, your tests will exit immediately
+  with exit code 1.
 - When running in a CI environment (CI variable exists), or on GitHub
-  Actions (GITHUB_ACTIONS variable exists), we will run in non interactive
-  mode (so tests will fail automatically if they do not match).
+  Actions (GITHUB_ACTIONS variable exists), your tests will run in
+  non-interactive mode - tests will fail automatically if they do not match.
 
 
 ## Installation
@@ -136,12 +139,23 @@ but might work in other shells as well.
 
 ## Real World Examples
 
+### Simple examples
+
 - The [approve][approve] file in this repository
-- Approvals for [rush][rush-example], the personal shell-based package manager
-- Approvals for [opcode][opcode-example], the local alias manager
-- Approvals for [alf][alf-example], the global bash alias manager
 - Approvals for [fuzzy-cd][fuzzy-cd-example], the fuzzy search cd patch
 - Approvals for [respec][respec-example], the RSpec convenience wrapper
+- Approvals for [git-changelog][git-changelog-example], the changelog generator
+- Approvals for [rush][rush-example], the personal shell-based package manager
+
+### Advanced examples (multiple test files)
+
+- Approvals for [opcode][opcode-example], the local alias manager
+- Approvals for [alf][alf-example], the global bash alias manager
+
+## Contributing / Support
+
+If you experience any issue, have a question or a suggestion, or if you wish
+to contribute, feel free to [open an issue][issues].
 
 
 [rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
@@ -149,4 +163,6 @@ but might work in other shells as well.
 [alf-example]: https://github.com/DannyBen/alf/tree/master/test
 [fuzzy-cd-example]: https://github.com/DannyBen/fuzzy-cd/tree/master/test/approve
 [respec-example]: https://github.com/DannyBen/respec/tree/master/test/approve
+[git-changelog-example]: https://github.com/DannyBen/git-changelog/blob/master/test/approve
 [approve]: https://github.com/DannyBen/approvals.bash/blob/master/test/approve
+[issues]: https://github.com/DannyBen/approvals.bash/issues
