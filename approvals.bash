@@ -9,7 +9,7 @@ approve() {
   cmd=$1
   last_exit_code=0
   actual=$(eval "$cmd" 2>&1) || last_exit_code=$?
-  if [[ "$allow_diff_regex" ]]; then
+  if [[ -v allow_diff_regex && "$allow_diff_regex" ]]; then
     actual=$(echo "$actual" | sed -E "s/$allow_diff_regex/*/g")
     unset allow_diff_regex
   fi
