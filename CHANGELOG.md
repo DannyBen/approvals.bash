@@ -1,6 +1,12 @@
 Change Log
 ========================================
 
+v0.5.0 - 2024-02-27
+----------------------------------------
+
+- Make output format more compact
+
+
 v0.4.2 - 2024-02-15
 ----------------------------------------
 
@@ -20,5 +26,3 @@ v0.4.0 - 2023-08-28
 - Fix exit codes on failure and apply set -e
 - Improve error handling and output
 - Add `allow_diff` function to allow some diff by regex
-
-
