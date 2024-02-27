@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run this from the root directory
 
-# Soure the approvals script
+# Source the approvals script
 source "approvals.bash"
 
 # Test commands
