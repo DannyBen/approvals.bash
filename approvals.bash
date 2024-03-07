@@ -87,7 +87,7 @@ user_approval() {
   local actual="$2"
   local approval_file="$3"
 
-  if [[ -v CI || -v GITHUB_ACTIONS ]]; then
+  if [[ -v CI || -v GITHUB_ACTIONS ]] && [[ -z "${AUTO_APPROVE+x}" ]]; then
     fail "$cmd"
   fi
 
