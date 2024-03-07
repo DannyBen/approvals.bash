@@ -23,3 +23,14 @@ context "when APPROVALS_DIR is set"
   
   describe "writes approvals to a different directory"
     approve "./sample-cli-app.sh"
+  
+  unset APPROVALS_DIR
+
+context "when AUTO_APPROVE is set"
+  AUTO_APPROVE=1
+  rm -f approvals/ls
+
+  describe "writes approvals without prompting the user"
+    approve "ls"
+
+  unset AUTO_APPROVE

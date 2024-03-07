@@ -91,10 +91,15 @@ user_approval() {
     fail "$cmd"
   fi
 
-  echo
-  printf "$approval_string"
-  response=$(bash -c "read -n 1 key; echo \$key")
-  printf "\b%.s" $(seq 1 $((${#approval_string} + 1)))
+  if [[ -v AUTO_APPROVE ]]; then
+    response=a
+  else
+    echo
+    printf "$approval_string"
+    response=$(bash -c "read -n 1 key; echo \$key")
+    printf "\b%.s" $(seq 1 $((${#approval_string} + 1)))
+  fi
+
   if [[ $response =~ [Aa] ]]; then
     printf "%b\n" "$actual" >"$approval_file"
     pass "$cmd"
@@ -128,8 +133,8 @@ fail_string="  $(red FAILED)     %s"
 pass_string="  $(green approved)   %s"
 exit_success_string="$(green ▌ exit)       $(bold %s finished successfully)"
 exit_failed_string="$(red ▌ exit)       $(bold %s finished with errors)"
-new_diff_string="────┤ $(yellow new): $(bold %s)) ├────"
-changed_diff_string="────┤ $(cyan changed): $(bold %s)) ├────"
+new_diff_string="────┤ $(yellow new): $(bold %s) ├────"
+changed_diff_string="────┤ $(cyan changed): $(bold %s) ├────"
 approval_string="[A]pprove? "
 
 if diff --help | grep -- --color >/dev/null 2>&1; then
