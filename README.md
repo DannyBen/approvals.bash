@@ -23,8 +23,8 @@ expected output stored in the approvals folder.
   test will pass.
 - When a new/updated approval is rejected, your tests will exit immediately
   with exit code 1.
-- When running in a CI environment (CI variable exists), or on GitHub
-  Actions (GITHUB_ACTIONS variable exists), your tests will run in
+- When running in a CI environment (`CI` variable exists), or on GitHub
+  Actions (`GITHUB_ACTIONS` variable exists), your tests will run in
   non-interactive mode - tests will fail automatically if they do not match.
 
 
@@ -129,6 +129,12 @@ export APPROVALS_DIR=$PWD/my-approvals
 
 approve "..."
 ```
+
+
+## Auto-approval
+
+Setting `AUTO_APPROVE=1` prior to running your tests will automatically approve
+all tests, as if the user has pressed `a` to approve each changed or new test.
 
 
 ## Compatibility
