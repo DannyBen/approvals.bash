@@ -4,33 +4,41 @@
 # Source the approvals script
 source "approvals.bash"
 
-# Test commands
+# Test everything inside the test directory
 cd ./test || exit
-context "standard operation"
-  describe "sample cli test"
-    approve "./sample-cli-app.sh"
-    approve "./sample-cli-app.sh --help"
-    approve "./sample-cli-app.sh say"
-    approve "./sample-cli-app.sh say hello"
-    approve "./sample-cli-app.sh say hello" "alternative_fixture_file"
 
-    # ignore the part matching this regex in the following approve call
+# Test commands
+describe "approve"
+  approve "./sample-cli-app.sh"
+  approve "./sample-cli-app.sh --help"
+  approve "./sample-cli-app.sh say"
+  approve "./sample-cli-app.sh say hello"
+  approve "./sample-cli-app.sh say hello" "alternative_fixture_file"
+
+  context "when APPROVALS_DIR is set"
+    APPROVALS_DIR=alt-approvals
+
+    it "writes approvals to a different directory"
+      approve "./sample-cli-app.sh"
+
+    unset APPROVALS_DIR
+
+  context "when AUTO_APPROVE is set"
+    AUTO_APPROVE=1
+    rm -f approvals/ls
+
+    it "writes approvals without prompting the user"
+      approve "ls"
+
+    unset AUTO_APPROVE
+
+describe "allow_diff"
+  it "ignores anything matching the regex in the next approve call"
     allow_diff "[0-9]+"
     approve "./sample-cli-app.sh random"
 
-context "when APPROVALS_DIR is set"
-  APPROVALS_DIR=alt-approvals
-  
-  describe "writes approvals to a different directory"
-    approve "./sample-cli-app.sh"
-  
-  unset APPROVALS_DIR
-
-context "when AUTO_APPROVE is set"
-  AUTO_APPROVE=1
-  rm -f approvals/ls
-
-  describe "writes approvals without prompting the user"
-    approve "ls"
-
-  unset AUTO_APPROVE
+describe "expect_exit_code"
+  context "when the previous approve exited with the expected code"
+    it "passes"
+      approve "ls no-such-dir"
+      expect_exit_code 2
