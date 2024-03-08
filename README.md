@@ -57,27 +57,28 @@ approve "ls -s" "ls_size"
 ```
 
 
-### Adding `context` and `describe` annotations
+### Annotation commands (`context`, `describe`, `it`)
 
-If your apptovals test files become too long or complex, you may use the
-`describe` and `context` commands to annotate your tests. These commands are
-purely decorative and will output the provided strings as captions.
+If your apptovals test files become too long or complex, you may the
+`describe`, `context` or `it` commands to annotate your tests. These commands
+are purely decorative and will output the provided strings as captions.
 
 ```bash
-context "basic operations"
-  describe "test ls"
-    approve "ls -s"
+describe "ls"
+  it "shows the list of files"
+    approve "ls"
 
 context "when in a non-empty directory"
   cd ./tmp
-  describe "test ls in another directory"
+  describe "ls -s"
     approve "ls -s"
     approve "ls -s" "ls_size"
   
   cd ../
 ```
 
-The indentation is optional.
+You can use any of the annotation commands, in any order. The indentation is
+optional.
 
 
 ### Testing exit code
