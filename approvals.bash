@@ -157,12 +157,12 @@ trap 'onerror' ERR
 describe_string="$(bold ▌ describe)   %s"
 context_string="$(bold ▌ context)    %s"
 it_string="$(bold ▌ it)         %s"
-fail_string="  $(red FAILED)     %s"
+fail_string="  $(red_bold failed)     %s"
 pass_string="  $(green approved)   %s"
 exit_success_string="$(green ▌ exit)       $(bold %s finished successfully)"
-exit_failed_string="$(red ▌ exit)       $(bold %s finished with errors)"
+exit_failed_string="$(red_bold ▌ exit)       $(bold %s finished with errors)"
 new_diff_string="────┤ $(yellow new): $(bold %s) ├────"
-changed_diff_string="────┤ $(cyan changed): $(bold %s) ├────"
+changed_diff_string="────┤ $(blue changed): $(bold %s) ├────"
 approval_string="[A]pprove? "
 
 if diff --help | grep -- --color >/dev/null 2>&1; then
