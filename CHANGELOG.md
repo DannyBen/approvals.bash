@@ -1,6 +1,13 @@
 Change Log
 ========================================
 
+v0.5.1 - 2024-03-08
+----------------------------------------
+
+- Add auto-approval with AUTO_APPROVE environment variable
+- Add `it` annotation and reduce annotation color noise
+
+
 v0.5.0 - 2024-02-27
 ----------------------------------------
 
