@@ -1,6 +1,6 @@
 # Approvals.bash - Bash Interactive Approval Testing
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/approvals.svg)
 
 Interactive approval testing for your bash scripts.
 
