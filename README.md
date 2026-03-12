@@ -143,18 +143,12 @@ but might work in other shells as well.
 
 ## Real World Examples
 
-### Simple examples
-
 - The [approve][approve] file in this repository
 - Approvals for [fuzzy-cd][fuzzy-cd-example], the fuzzy search cd patch
 - Approvals for [respec][respec-example], the RSpec convenience wrapper
 - Approvals for [git-changelog][git-changelog-example], the changelog generator
 - Approvals for [rush][rush-example], the personal shell-based package manager
-
-### Advanced examples (multiple test files)
-
 - Approvals for [opcode][opcode-example], the local alias manager
-- Approvals for [alf][alf-example], the global bash alias manager
 
 ## Contributing / Support
 
@@ -164,7 +158,6 @@ to contribute, feel free to [open an issue][issues].
 
 [rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
-[alf-example]: https://github.com/DannyBen/alf/tree/master/test
 [fuzzy-cd-example]: https://github.com/DannyBen/fuzzy-cd/tree/master/test/approve
 [respec-example]: https://github.com/DannyBen/respec/tree/master/test/approve
 [git-changelog-example]: https://github.com/DannyBen/git-changelog/blob/master/test/approve
