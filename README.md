@@ -156,7 +156,7 @@ If you experience any issue, have a question or a suggestion, or if you wish
 to contribute, feel free to [open an issue][issues].
 
 
-[rush-example]: https://github.com/DannyBen/rush-cli/blob/master/test/approve
+[rush-example]: https://github.com/DannyBen/rush/blob/v1.0.0/test/approve
 [opcode-example]: https://github.com/DannyBen/opcode/tree/master/test
 [fuzzy-cd-example]: https://github.com/DannyBen/fuzzy-cd/tree/master/test/approve
 [respec-example]: https://github.com/DannyBen/respec/tree/master/test/approve
